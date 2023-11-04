@@ -1,7 +1,7 @@
 import { Alert, Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
-const CustomButton = ({ pinValue, setPinValue, buttonVal, pressCount, setPressCount }) => {
+const CustomButton = ({ pinValue, setLockState,lockState,setPinValue, buttonVal, pressCount, setPressCount }) => {
     const { width, height } = Dimensions.get('window');
 
     let buttonWidth = width / 5
@@ -18,14 +18,29 @@ const CustomButton = ({ pinValue, setPinValue, buttonVal, pressCount, setPressCo
 
                         if (pressCount === 3) {
                             if (updatedPinValue.every((value, index) => value === [1, 2, 3, 4][index])) {
-                                setPressCount(0);
-                                Alert.alert("Unlock");
-                                setPinValue([null, null, null, null]);
+                               
+                                setLockState(true)
+                                setTimeout(() => {
+                                    setPinValue([null, null, null, null]);
+                                    setPressCount(0);
+                                    Alert.alert("Unlock");
+
+                                }, 1000);
+
+
 
                             } else {
-                                setPinValue([null, null, null, null]);
-                                setPressCount(0);
                                 Alert.alert("Wrong");
+                                setLockState(true)
+                                setTimeout(() => {
+                                    setPinValue([null, null, null, null]);
+                                    setPressCount(0);
+                                }, 1000);
+                               
+                                
+
+
+
                             }
                         }
                         return updatedPinValue;

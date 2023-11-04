@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import CustomButton from '../Components/CustomButton'
 
-const NumberPad = ({buttonVal,setButtonVal,setPinValue, pinValue,pressCount,setPressCount}) => {
+const NumberPad = ({buttonVal,setButtonVal,lockState,setLockState,setPinValue, pinValue,pressCount,setPressCount}) => {
     const numbersH = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
     return (
@@ -15,6 +15,8 @@ const NumberPad = ({buttonVal,setButtonVal,setPinValue, pinValue,pressCount,setP
                 pinValue = {pinValue}
                 pressCount = {pressCount}
                 setPressCount = {setPressCount}
+                lockState = {lockState}
+                setLockState =  {setLockState}
                 />
             ))}
         </View>
