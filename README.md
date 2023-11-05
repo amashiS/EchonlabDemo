@@ -9,9 +9,10 @@ The pin indicators and buttons are developed as reuseble components.
 
 ## Demo
 
-![App Screenshot](https://github.com/amashiS/EchonlabDemo/assets/122769087/c39321b3-a563-4e48-b013-d28ac64c8d20)
-
-![App Screenshot](https://github.com/amashiS/EchonlabDemo/assets/122769087/bad71adb-9a90-49d2-bbc6-f1285ad74ed8)
+<p float="left">
+  <img src="https://github.com/amashiS/EchonlabDemo/assets/122769087/c39321b3-a563-4e48-b013-d28ac64c8d20" width="400" />
+  <img src="https://github.com/amashiS/EchonlabDemo/assets/122769087/bad71adb-9a90-49d2-bbc6-f1285ad74ed8" width="400" /> 
+</p>
 
 ## Features
 
@@ -45,8 +46,7 @@ The pin indicators and buttons are developed as reuseble components.
 
 ## Reusable Components
 
-To deploy this project run
-
+**CustomButton**
 ```bash
 import { Alert, Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
@@ -124,6 +124,28 @@ const styles = StyleSheet.create({
 
 ```
 
+**Indicator**
+```bash
+const PinIndicatorBubble = () => {
+        const pinIndicators = Array(4).fill(null).map((_, index) => (
+            <View
+                key={index}
+                style={
+                    index < pressCount
+                        ? styles.pinIndicator
+                        : styles.pinIndicatorBlank
+                }
+            />
+        ));
+
+        return (
+            <View style={{ flexDirection: 'row', gap: 15, alignSelf: 'center', marginTop: 20 }}>
+                {pinIndicators}
+            </View>
+        );
+    };
+
+```
 ## Color Reference
 
 | Color             | Hex                                                                |
