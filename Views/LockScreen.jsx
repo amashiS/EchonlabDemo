@@ -25,7 +25,7 @@ const LockScreen = () => {
                 } else {
                     clearInterval(timer);
                     setTryCount(0);
-                    setSeconds(5)
+                    setSeconds(60)
                 }
             }, 1000);
             return () => clearInterval(timer);
@@ -78,7 +78,7 @@ const LockScreen = () => {
 
                         <View style={styles.modalStyle}>
                             <Text style={styles.timerTextTitle}>Phone Locked</Text>
-                            <Text style={styles.timerText}>Try agin after {seconds} seconds</Text>
+                            <Text style={styles.timerText}>Try again after {seconds} seconds</Text>
                         </View>
                     </Modal>
                 )
@@ -150,7 +150,9 @@ const styles = StyleSheet.create({
     timerText: {
         color: '#E15646',
         fontFamily: 'Roboto',
-        fontSize: 20
+        fontSize: 20,
+        
+
     },
     enterPascodeText: {
         fontFamily: 'Roboto',

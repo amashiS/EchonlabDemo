@@ -1,79 +1,67 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# Lock Screen Demo
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Lock screen demo app develped for Echonlabs Pvt Ltd assignment by Amashi Silva. The app developed using React Native.
 
-## Step 1: Start the Metro Server
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Features
 
+- 4 Digit PIN
+- Check Atempts
+- Warrning alerts
+- Cross platform
+
+
+## Installation
+
+- **Step 1** First you need to setup development environment using this link  [navigate to official documentaion](https://reactnative.dev/docs/environment-setup)
+
+- **Step 2** Open terminal & clone repo
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+  git clone https://github.com/amashiS/EchonlabDemo.git
 ```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
+- **Step 3** Navigate to project
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+  cd EchonlabDemo
 ```
-
-### For iOS
-
+- **Step 4** Install Node Modules
 ```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+  npm i or yarn install
 ```
+- **Step 4** Start Metro 
+```bash
+  npm start or yarn start
+```
+- **Step 5** After start metro you can app on conected device
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## Demo
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+![App Screenshot](https://github.com/amashiS/EchonlabDemo/assets/122769087/c39321b3-a563-4e48-b013-d28ac64c8d20)
 
-## Step 3: Modifying your App
+![App Screenshot](https://github.com/amashiS/EchonlabDemo/assets/122769087/bad71adb-9a90-49d2-bbc6-f1285ad74ed8)
 
-Now that you have successfully run the app, let's modify it.
+## Authors
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+- [@amashiS](https://github.com/amashiS)
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
 
-## Congratulations! :tada:
+## Feedback
 
-You've successfully run and modified your React Native App. :partying_face:
+If you have any feedback, please reach out to me at amashi.silva99@gmail.com
 
-### Now what?
+## Color Reference
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+| Color             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Background Color | ![ #fafafa](https://via.placeholder.com/10/FAFAFA?text=+) #fafafa |
+| Error Text and PIN fill Color | ![#E15646](https://via.placeholder.com/10/E15646?text=+) #E15646 |
+| All other elements | ![#5A7FD6](https://via.placeholder.com/10/5A7FD6?text=+) #5A7FD6 |
 
-# Troubleshooting
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
-# Learn More
+## 🔗 Links
 
-To learn more about React Native, take a look at the following resources:
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/amashi-silva-106660260)
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
