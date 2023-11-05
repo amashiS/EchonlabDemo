@@ -5,9 +5,9 @@ import NumberPad from '../Widgets/NumberPad'
 const LockScreen = () => {
     const [buttonVal, setButtonVal] = useState(null);
     const [pinValue, setPinValue] = useState([null, null, null, null])
-    const [pressCount, setPressCount] = useState(0)
+    const [pressCount, setPressCount] = useState(0)  // Count of button pressed 
     const [lockState, setLockState] = useState(false)
-    const [tryCount, setTryCount] = useState(0)
+    const [tryCount, setTryCount] = useState(0)      // Count of attempts 
     const [seconds, setSeconds] = useState(60);
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -17,7 +17,10 @@ const LockScreen = () => {
         )
     }
 
+
+    // Set timer when failed 3 attempts
     useEffect(() => {
+
         if (tryCount === 3) {
             const timer = setInterval(() => {
                 if (seconds > 0) {
@@ -66,13 +69,13 @@ const LockScreen = () => {
 
             </View>
             {
+                // Open Modal after failed 3 attempts
                 tryCount === 3 && (
                     <Modal
                         animationType="fade"
                         transparent={true}
                         visible={true}
                         onRequestClose={() => {
-                            Alert.alert('Modal has been closed.');
                             setModalVisible(!modalVisible);
                         }}>
 
@@ -99,6 +102,7 @@ const LockScreen = () => {
             <View style={styles.deleteButton}>
 
                 <TouchableOpacity onPress={() => {
+                    // set null last index value
                     if (pinValue[pressCount - 1] != null) {
                         pinValue[pressCount - 1] = null
                         setPressCount(pressCount - 1)

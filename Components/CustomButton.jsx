@@ -2,20 +2,22 @@ import { Alert, Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'rea
 import React, { useState } from 'react'
 
 const CustomButton = ({ pinValue, setLockState, lockState, setPinValue, tryCount, setTryCount, buttonVal, pressCount, setPressCount }) => {
-    const { width, height } = Dimensions.get('window');
+    const { width, height } = Dimensions.get('window'); // get screen height and width
     let buttonWidth = width / 5
 
     return (
         <TouchableOpacity
             onPress={() => {
+                // Check press count
                 if (pressCount < 4) {
                     setPinValue((prevPinValue) => {
                         const updatedPinValue = [...prevPinValue];
                         updatedPinValue[pressCount] = buttonVal;
                         setPressCount(pressCount + 1);
                         if (pressCount === 3) {
-                            if (updatedPinValue.every((value, index) => value === [1, 2, 3, 4][index])) {
 
+                            // Check is unlocked
+                            if (updatedPinValue.every((value, index) => value === [1, 2, 3, 4][index])) {
                                 setLockState(true)
                                 setTimeout(() => {
                                     setPinValue([null, null, null, null]);
@@ -24,6 +26,8 @@ const CustomButton = ({ pinValue, setLockState, lockState, setPinValue, tryCount
                                     Alert.alert("Unlocked");
                                 }, 1000);
                             } else {
+                                                                
+                                // Faliled check atempts
                                 if (tryCount <= 2) {
                                     setLockState(false)
                                     setTimeout(() => {
@@ -33,6 +37,8 @@ const CustomButton = ({ pinValue, setLockState, lockState, setPinValue, tryCount
                                         setTryCount(tryCount + 1)
                                     }, 100);
                                 }
+
+                                // Faliled 3 atempts
                                 else {
                                     setTimeout(() => {
                                         Alert.alert("Try again 1 min");
