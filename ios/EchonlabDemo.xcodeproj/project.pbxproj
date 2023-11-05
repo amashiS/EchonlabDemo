@@ -12,11 +12,11 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		51E6CFC8BA5F4F90AC4446F5 /* Roboto Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49549D42315442BB9E677D88 /* Roboto Regular.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-EchonlabDemo-EchonlabDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-EchonlabDemo-EchonlabDemoTests.a */; };
+		7B9CB1FCF8EF4EE7B10C774F /* Agbalumo Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BC6DEB23FD948A7BD775D02 /* Agbalumo Regular.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		FCE68A2A461F497EB99808DD /* Roboto Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2536AC710994B2189322EE1 /* Roboto Bold.ttf */; };
-		51E6CFC8BA5F4F90AC4446F5 /* Roboto Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 49549D42315442BB9E677D88 /* Roboto Regular.ttf */; };
-		7B9CB1FCF8EF4EE7B10C774F /* Agbalumo Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BC6DEB23FD948A7BD775D02 /* Agbalumo Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,16 +40,16 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = EchonlabDemo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = EchonlabDemo/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-EchonlabDemo-EchonlabDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EchonlabDemo-EchonlabDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BC6DEB23FD948A7BD775D02 /* Agbalumo Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Agbalumo Regular.ttf"; path = "../assets/fonts/Agbalumo Regular.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-EchonlabDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EchonlabDemo.debug.xcconfig"; path = "Target Support Files/Pods-EchonlabDemo/Pods-EchonlabDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		49549D42315442BB9E677D88 /* Roboto Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto Regular.ttf"; path = "../assets/fonts/Roboto Regular.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-EchonlabDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EchonlabDemo.release.xcconfig"; path = "Target Support Files/Pods-EchonlabDemo/Pods-EchonlabDemo.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-EchonlabDemo-EchonlabDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EchonlabDemo-EchonlabDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-EchonlabDemo-EchonlabDemoTests/Pods-EchonlabDemo-EchonlabDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-EchonlabDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EchonlabDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = EchonlabDemo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-EchonlabDemo-EchonlabDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EchonlabDemo-EchonlabDemoTests.release.xcconfig"; path = "Target Support Files/Pods-EchonlabDemo-EchonlabDemoTests/Pods-EchonlabDemo-EchonlabDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		A2536AC710994B2189322EE1 /* Roboto Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto Bold.ttf"; path = "../assets/fonts/Roboto Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		A2536AC710994B2189322EE1 /* Roboto Bold.ttf */ = {isa = PBXFileReference; name = "Roboto Bold.ttf"; path = "../assets/fonts/Roboto Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		49549D42315442BB9E677D88 /* Roboto Regular.ttf */ = {isa = PBXFileReference; name = "Roboto Regular.ttf"; path = "../assets/fonts/Roboto Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		1BC6DEB23FD948A7BD775D02 /* Agbalumo Regular.ttf */ = {isa = PBXFileReference; name = "Agbalumo Regular.ttf"; path = "../assets/fonts/Agbalumo Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +87,16 @@
 				00E356F11AD99517003FC87E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		050BC9EE24C84DE1BE15A066 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A2536AC710994B2189322EE1 /* Roboto Bold.ttf */,
+				49549D42315442BB9E677D88 /* Roboto Regular.ttf */,
+				1BC6DEB23FD948A7BD775D02 /* Agbalumo Regular.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		13B07FAE1A68108700A75B9A /* EchonlabDemo */ = {
@@ -154,17 +164,6 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		050BC9EE24C84DE1BE15A066 /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				A2536AC710994B2189322EE1 /* Roboto Bold.ttf */,
-				49549D42315442BB9E677D88 /* Roboto Regular.ttf */,
-				1BC6DEB23FD948A7BD775D02 /* Agbalumo Regular.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -507,6 +506,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P4389CX46Y;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = EchonlabDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -534,6 +534,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P4389CX46Y;
 				INFOPLIST_FILE = EchonlabDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -621,10 +622,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -694,10 +692,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -8,7 +8,7 @@ const LockScreen = () => {
     const [pressCount, setPressCount] = useState(0)
     const [lockState, setLockState] = useState(false)
     const [tryCount, setTryCount] = useState(0)
-    const [seconds, setSeconds] = useState(5);
+    const [seconds, setSeconds] = useState(60);
     const [modalVisible, setModalVisible] = useState(false);
 
     const PinIndicatorContainer = () => {
