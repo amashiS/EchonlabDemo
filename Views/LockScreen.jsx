@@ -41,89 +41,42 @@ const LockScreen = () => {
       
     
 
-    const PinIndicatorBubble = () => {
-
-        if (pressCount == 0) {
-            return (
-                <View style={{ flexDirection: 'row', gap: 10 }}>
-                    <View style={styles.pinIndicatorBlank} />
-                    <View style={styles.pinIndicatorBlank} />
-                    <View style={styles.pinIndicatorBlank} />
-                    <View style={styles.pinIndicatorBlank} />
-
-                </View>
-
-            )
-
-        }
-        else if (pressCount == 1) {
-            return (
-                <View style={{ flexDirection: 'row', gap: 10 }}>
-
-                    <View style={styles.pinIndicator} />
-                    <View style={styles.pinIndicatorBlank} />
-                    <View style={styles.pinIndicatorBlank} />
-                    <View style={styles.pinIndicatorBlank} />
-                </View>
-
-
-
-            )
-        }
-        else if (pressCount == 2) {
-            return (
-                <View style={{ flexDirection: 'row', gap: 10 }}>
-
-                    <View style={styles.pinIndicator} />
-                    <View style={styles.pinIndicator} />
-                    <View style={styles.pinIndicatorBlank} />
-                    <View style={styles.pinIndicatorBlank} />
-                </View>
-
-
-
-            )
-        }
-        else if (pressCount == 3) {
-            console.log("Hello")
-
-            return (
-                <View style={{ flexDirection: 'row', gap: 10 }}>
-
-                    <View style={styles.pinIndicator} />
-                    <View style={styles.pinIndicator} />
-                    <View style={styles.pinIndicator} />
-                    <View style={styles.pinIndicatorBlank} />
-                </View>
-
-
-
-            )
-        }
-        else if (lockState == true || lockState == false) {
-            return (
-                <View style={{ flexDirection: 'row', gap: 10 }}>
-
-                    <View style={styles.pinIndicator} />
-                    <View style={styles.pinIndicator} />
-                    <View style={styles.pinIndicator} />
-                    <View style={styles.pinIndicator} />
-
-                </View>
-
-
-
-            )
-        }
-
-
-    }
+      const PinIndicatorBubble = () => {
+        const pinIndicators = Array(4).fill(null).map((_, index) => (
+          <View
+            key={index}
+            style={
+              index < pressCount
+                ? styles.pinIndicator
+                : styles.pinIndicatorBlank
+            }
+          />
+        ));
+    
+        return (
+          <View style={{ flexDirection: 'row', gap: 15, alignSelf: 'center',marginTop:20 }}>
+            {pinIndicators}
+          </View>
+        );
+      };
 
     console.log("try count in main", tryCount);
     return (
         <View style={styles.lockscrContainer}>
-            <View style={{ flex: 1 }}>
-                <View style={{ flex: 1 }}>
+            <View style={{ flex: 0.6 ,alignSelf:'center',justifyContent:'center',alignItems:'center'}}>
+                <View style={{ gap:0,alignItems:'center' }}>
+<Text style={styles.enterPascodeText}>
+    Enter Passcode
+</Text>
+{
+    tryCount > 0 ? (
+        <Text style={styles.attempsText}>
+    You have {3-tryCount}  attempts left
+</Text>
+    ):(    <Text> </Text>
+    )
+
+}
 
                     <PinIndicatorContainer />
                 </View>
@@ -134,7 +87,7 @@ const LockScreen = () => {
             {
                 tryCount === 3 && (
                     <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={true}
         onRequestClose={() => {
@@ -143,9 +96,11 @@ const LockScreen = () => {
         }}>
 
 
-<View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, top: 0, backgroundColor: '#000' ,opacity:0.5,justifyContent:'center',
-alignItems:'center'}}>
-<Text style={styles.timerText}>{seconds} drh</Text>
+<View style={styles.modalStyle}>
+
+        <Text style={styles.timerTextTitle}>Phone Locked</Text>
+        <Text style={styles.timerText}>Try agin after {seconds} seconds</Text>
+
             </View>
             </Modal>
                 )
@@ -189,6 +144,7 @@ alignItems:'center'}}>
     )
 }
 </View>
+
            
         </View>
 
@@ -204,17 +160,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '100%',
-        padding: 20
+        padding: 20,
+
 
     },
     pinIndicator: {
-        width: 20,
+        width: 18,
         aspectRatio: 1,
-        backgroundColor: '#5A7FD6',
+        backgroundColor: '#E15646',
         borderRadius: 20
     },
     pinIndicatorBlank: {
-        width: 20,
+        width: 18,
         aspectRatio: 1,
         borderColor: '#5A7FD6',
         borderRadius: 20,
@@ -226,8 +183,38 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
     },
     timerText:{
-        backgroundColor:'red',
-        color:'#000'
+        color:'#E15646',
+        fontFamily:'Roboto',
+        fontSize:20
+    },
+    enterPascodeText:{
+        fontFamily:'Roboto',
+        fontSize:28,
+        color: '#5A7FD6',
+
+
+    },
+    timerTextTitle:{
+        fontFamily:'Roboto',
+        fontSize:28,
+        color:'#E15646',
+        fontWeight:"500"
+    },
+    modalStyle:{
+         position: 'absolute', 
+         left: 0, 
+         right: 0, 
+         bottom: 0, 
+         top: 0, 
+         backgroundColor: 'rgba(0, 0, 0, 0.8)', 
+         justifyContent: 'center', 
+         alignItems: 'center',
+         gap:10 
+    },
+    attempsText:{
+        fontFamily:'Roboto',
+        fontSize:17,
+        color:'#E15646',
     }
 
 })

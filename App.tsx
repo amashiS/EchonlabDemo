@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#fafafa',
     alignItems:'center',
     justifyContent:'center',
-    width:'100%'
+    width:'100%',
     
   }
 });
