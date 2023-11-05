@@ -1,9 +1,8 @@
 import { Alert, Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 
-const CustomButton = ({ pinValue, setLockState,lockState,setPinValue, buttonVal, pressCount, setPressCount }) => {
+const CustomButton = ({ pinValue, setLockState,lockState,setPinValue,tryCount,setTryCount, buttonVal, pressCount, setPressCount }) => {
     const { width, height } = Dimensions.get('window');
-
     let buttonWidth = width / 5
 
     return (
@@ -30,12 +29,31 @@ const CustomButton = ({ pinValue, setLockState,lockState,setPinValue, buttonVal,
 
 
                             } else {
-                                Alert.alert("Wrong");
-                                setLockState(true)
-                                setTimeout(() => {
-                                    setPinValue([null, null, null, null]);
-                                    setPressCount(0);
-                                }, 1000);
+
+                                if(tryCount <= 2){
+                                    setLockState(false)
+                                    setTimeout(() => {
+                                        setPinValue([null, null, null, null]);
+                                        setPressCount(0);
+                                        Alert.alert("Wrong");
+                                        setTryCount(tryCount+1)
+    
+                                    }, 100);
+                                }
+                                else {
+
+                                    setTimeout(() => {
+                                     
+                                        Alert.alert("Try again 1 min");
+                                        setPinValue([null, null, null, null]);
+                                        setPressCount(0);
+    
+                                    }, 100);
+
+                                }
+                                console.log("Try Count is ",tryCount)
+
+                               
                                
                                 
 

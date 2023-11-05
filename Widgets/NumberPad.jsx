@@ -1,24 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import CustomButton from '../Components/CustomButton'
 
-const NumberPad = ({buttonVal,setButtonVal,lockState,setLockState,setPinValue, pinValue,pressCount,setPressCount}) => {
+const NumberPad = ({ buttonVal, setButtonVal, lockState, setLockState, setPinValue, pinValue, pressCount, setPressCount, tryCount, setTryCount }) => {
     const numbersH = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
     return (
         <View style={styles.numberpadContainer}>
             {numbersH.map(number => (
-                <CustomButton 
-                key={number} 
-                buttonVal={number} 
-                setPinValue ={ setPinValue}
-                pinValue = {pinValue}
-                pressCount = {pressCount}
-                setPressCount = {setPressCount}
-                lockState = {lockState}
-                setLockState =  {setLockState}
+                <CustomButton
+                    key={number}
+                    buttonVal={number}
+                    setPinValue={setPinValue}
+                    pinValue={pinValue}
+                    pressCount={pressCount}
+                    setPressCount={setPressCount}
+                    lockState={lockState}
+                    setLockState={setLockState}
+                    tryCount={tryCount}
+                    setTryCount={setTryCount}
                 />
             ))}
+            
         </View>
     );
 }
@@ -34,5 +37,6 @@ const styles = StyleSheet.create({
         gap: 20,
         flexWrap: 'wrap',
         padding: 20
-    }
+    },
+    
 })

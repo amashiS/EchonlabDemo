@@ -1,29 +1,55 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import { StyleSheet, Text, View, Modal, Touchable, TouchableOpacity } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import NumberPad from '../Widgets/NumberPad'
 
 const LockScreen = () => {
     const [buttonVal, setButtonVal] = useState(null);
     const [pinValue, setPinValue] = useState([null, null, null, null])
     const [pressCount, setPressCount] = useState(0)
-    const [lockState,setLockState] = useState(false)
+    const [lockState, setLockState] = useState(false)
+    const [tryCount, setTryCount] = useState(0)
+    const [seconds, setSeconds] = useState(5);
+  const [modalVisible, setModalVisible] = useState(false); 
+
+
+
 
     const PinIndicatorContainer = () => {
-        return(
+        return (
             <PinIndicatorBubble />
-           
+
         )
     }
+
+
+
+    useEffect(() => {
+        if (tryCount === 3) {
+          const timer = setInterval(() => {
+            if (seconds > 0) {
+              setSeconds(seconds - 1);
+            } else {
+              clearInterval(timer);
+              setTryCount(0);
+              setSeconds(5)
+            }
+          }, 1000);
+      
+          return () => clearInterval(timer); 
+        }
+      }, [tryCount, seconds]);
+      
+    
 
     const PinIndicatorBubble = () => {
 
         if (pressCount == 0) {
             return (
-                <View style={{flexDirection:'row',gap:10}}>  
-                <View style={styles.pinIndicatorBlank} />
-                <View style={styles.pinIndicatorBlank} />
-                <View style={styles.pinIndicatorBlank} />
-                <View style={styles.pinIndicatorBlank} />
+                <View style={{ flexDirection: 'row', gap: 10 }}>
+                    <View style={styles.pinIndicatorBlank} />
+                    <View style={styles.pinIndicatorBlank} />
+                    <View style={styles.pinIndicatorBlank} />
+                    <View style={styles.pinIndicatorBlank} />
 
                 </View>
 
@@ -32,12 +58,12 @@ const LockScreen = () => {
         }
         else if (pressCount == 1) {
             return (
-                <View style={{flexDirection:'row',gap:10}}>  
+                <View style={{ flexDirection: 'row', gap: 10 }}>
 
-                <View style={styles.pinIndicator} />
-                <View style={styles.pinIndicatorBlank} />
-                <View style={styles.pinIndicatorBlank} />
-                <View style={styles.pinIndicatorBlank} />
+                    <View style={styles.pinIndicator} />
+                    <View style={styles.pinIndicatorBlank} />
+                    <View style={styles.pinIndicatorBlank} />
+                    <View style={styles.pinIndicatorBlank} />
                 </View>
 
 
@@ -46,12 +72,12 @@ const LockScreen = () => {
         }
         else if (pressCount == 2) {
             return (
-                <View style={{flexDirection:'row',gap:10}}>  
+                <View style={{ flexDirection: 'row', gap: 10 }}>
 
-                <View style={styles.pinIndicator} />
-                <View style={styles.pinIndicator} />
-                <View style={styles.pinIndicatorBlank} />
-                <View style={styles.pinIndicatorBlank} />
+                    <View style={styles.pinIndicator} />
+                    <View style={styles.pinIndicator} />
+                    <View style={styles.pinIndicatorBlank} />
+                    <View style={styles.pinIndicatorBlank} />
                 </View>
 
 
@@ -62,28 +88,28 @@ const LockScreen = () => {
             console.log("Hello")
 
             return (
-                <View style={{flexDirection:'row',gap:10}}>  
+                <View style={{ flexDirection: 'row', gap: 10 }}>
 
-                <View style={styles.pinIndicator} />
-                <View style={styles.pinIndicator} />
-                <View style={styles.pinIndicator} />
-                <View style={styles.pinIndicatorBlank} />
+                    <View style={styles.pinIndicator} />
+                    <View style={styles.pinIndicator} />
+                    <View style={styles.pinIndicator} />
+                    <View style={styles.pinIndicatorBlank} />
                 </View>
 
 
 
             )
         }
-        else if (lockState ==  true)  {
+        else if (lockState == true || lockState == false) {
             return (
-                <View style={{flexDirection:'row',gap:10}}>  
+                <View style={{ flexDirection: 'row', gap: 10 }}>
 
-                <View style={styles.pinIndicator} />
-                <View style={styles.pinIndicator} />
-                <View style={styles.pinIndicator} />
-                <View style={styles.pinIndicator} />
+                    <View style={styles.pinIndicator} />
+                    <View style={styles.pinIndicator} />
+                    <View style={styles.pinIndicator} />
+                    <View style={styles.pinIndicator} />
 
-              </View>
+                </View>
 
 
 
@@ -93,17 +119,38 @@ const LockScreen = () => {
 
     }
 
+    console.log("try count in main", tryCount);
     return (
         <View style={styles.lockscrContainer}>
             <View style={{ flex: 1 }}>
-            <View style={{ flex: 1 }}>
+                <View style={{ flex: 1 }}>
 
-                <PinIndicatorContainer />
-</View>
+                    <PinIndicatorContainer />
+                </View>
 
 
 
             </View>
+            {
+                tryCount === 3 && (
+                    <Modal
+        animationType="slide"
+        transparent={true}
+        visible={true}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setModalVisible(!modalVisible);
+        }}>
+
+
+<View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, top: 0, backgroundColor: '#000' ,opacity:0.5,justifyContent:'center',
+alignItems:'center'}}>
+<Text style={styles.timerText}>{seconds} drh</Text>
+            </View>
+            </Modal>
+                )
+            }
+            
             <NumberPad
                 buttonVal={buttonVal}
                 setButtonVal={setButtonVal}
@@ -111,10 +158,41 @@ const LockScreen = () => {
                 setPinValue={setPinValue}
                 pressCount={pressCount}
                 setPressCount={setPressCount}
-                lockState = {lockState}
-                setLockState =  {setLockState}
+                lockState={lockState}
+                setLockState={setLockState}
+                tryCount={tryCount}
+                setTryCount={setTryCount}
             />
+        <View style={styles.deleteButton}>
+
+{
+    pinValue[pressCount - 1] != null ? (
+            <TouchableOpacity onPress={() => {
+                if (pinValue[pressCount - 1] != null) {
+                    pinValue[pressCount - 1] = null
+                    setPressCount(pressCount - 1)
+                    console.log(pinValue);
+                }
+            }
+            }>
+                <Text>Delete</Text>
+            </TouchableOpacity>
+    ) : (
+        <View style={styles.deleteButton}>
+            <TouchableOpacity onPress={() => {
+               
+            }
+            }>
+                <Text> </Text>
+            </TouchableOpacity>
         </View>
+    )
+}
+</View>
+           
+        </View>
+
+
     )
 }
 
@@ -142,6 +220,14 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderWidth: 3
 
+    },
+    deleteButton: {
+        width: '100%',
+        alignItems: 'flex-end',
+    },
+    timerText:{
+        backgroundColor:'red',
+        color:'#000'
     }
 
 })
