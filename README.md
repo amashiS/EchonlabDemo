@@ -3,7 +3,15 @@
 
 Lock screen demo app develped for Echonlabs Pvt Ltd assignment by Amashi Silva. The app developed using React Native.
 
+The pin indicators and buttons are developed as reuseble components. 
 
+
+
+## Demo
+
+![App Screenshot](https://github.com/amashiS/EchonlabDemo/assets/122769087/c39321b3-a563-4e48-b013-d28ac64c8d20)
+
+![App Screenshot](https://github.com/amashiS/EchonlabDemo/assets/122769087/bad71adb-9a90-49d2-bbc6-f1285ad74ed8)
 
 ## Features
 
@@ -35,20 +43,86 @@ Lock screen demo app develped for Echonlabs Pvt Ltd assignment by Amashi Silva. 
 ```
 - **Step 5** After start metro you can app on conected device
 
-## Demo
+## Reusable Components
 
-![App Screenshot](https://github.com/amashiS/EchonlabDemo/assets/122769087/c39321b3-a563-4e48-b013-d28ac64c8d20)
+To deploy this project run
 
-![App Screenshot](https://github.com/amashiS/EchonlabDemo/assets/122769087/bad71adb-9a90-49d2-bbc6-f1285ad74ed8)
+```bash
+import { Alert, Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
 
-## Authors
+const CustomButton = ({ pinValue, setLockState, lockState, setPinValue, tryCount, setTryCount, buttonVal, pressCount, setPressCount }) => {
+    const { width, height } = Dimensions.get('window');
+    let buttonWidth = width / 5
 
-- [@amashiS](https://github.com/amashiS)
+    return (
+        <TouchableOpacity
+            onPress={() => {
+                if (pressCount < 4) {
+                    setPinValue((prevPinValue) => {
+                        const updatedPinValue = [...prevPinValue];
+                        updatedPinValue[pressCount] = buttonVal;
+                        setPressCount(pressCount + 1);
+                        if (pressCount === 3) {
+                            if (updatedPinValue.every((value, index) => value === [1, 2, 3, 4][index])) {
 
+                                setLockState(true)
+                                setTimeout(() => {
+                                    setPinValue([null, null, null, null]);
+                                    setPressCount(0);
+                                    setTryCount(0)
+                                    Alert.alert("Unlocked");
+                                }, 1000);
+                            } else {
+                                if (tryCount <= 2) {
+                                    setLockState(false)
+                                    setTimeout(() => {
+                                        setPinValue([null, null, null, null]);
+                                        setPressCount(0);
+                                        Alert.alert("Incorrect PIN");
+                                        setTryCount(tryCount + 1)
+                                    }, 100);
+                                }
+                                else {
+                                    setTimeout(() => {
+                                        Alert.alert("Try again 1 min");
+                                        setPinValue([null, null, null, null]);
+                                        setPressCount(0);
 
-## Feedback
+                                    }, 100);
+                                }
+                            }
+                        }
+                        return updatedPinValue;
+                    });
+                }
+            }}
+            style={[styles.buttonContainer, { width: buttonWidth, aspectRatio: 1 }]}
+        >
+            <Text style={styles.buttonTitle}>{buttonVal}</Text>
+        </TouchableOpacity>
+    )
+}
 
-If you have any feedback, please reach out to me at amashi.silva99@gmail.com
+export default CustomButton
+
+const styles = StyleSheet.create({
+    buttonTitle: {
+        fontFamily: 'Roboto',
+        fontSize: 40,
+        color: '#5A7FD6'
+    },
+
+    buttonContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 150,
+        borderWidth: 3,
+        borderColor: '#5A7FD6'
+    }
+})
+
+```
 
 ## Color Reference
 
@@ -64,4 +138,21 @@ If you have any feedback, please reach out to me at amashi.silva99@gmail.com
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/amashi-silva-106660260)
 
+
+
+## Used Fonts
+- **Roboto** https://fonts.google.com/specimen/Roboto
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Authors
+
+- [@amashiS](https://github.com/amashiS)
+
+
+## Feedback
+
+If you have any feedback, please reach out to me at amashi.silva99@gmail.com
 
