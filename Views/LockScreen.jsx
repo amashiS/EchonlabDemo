@@ -9,103 +9,81 @@ const LockScreen = () => {
     const [lockState, setLockState] = useState(false)
     const [tryCount, setTryCount] = useState(0)
     const [seconds, setSeconds] = useState(5);
-  const [modalVisible, setModalVisible] = useState(false); 
-
-
-
+    const [modalVisible, setModalVisible] = useState(false);
 
     const PinIndicatorContainer = () => {
         return (
             <PinIndicatorBubble />
-
         )
     }
 
-
-
     useEffect(() => {
         if (tryCount === 3) {
-          const timer = setInterval(() => {
-            if (seconds > 0) {
-              setSeconds(seconds - 1);
-            } else {
-              clearInterval(timer);
-              setTryCount(0);
-              setSeconds(5)
-            }
-          }, 1000);
-      
-          return () => clearInterval(timer); 
+            const timer = setInterval(() => {
+                if (seconds > 0) {
+                    setSeconds(seconds - 1);
+                } else {
+                    clearInterval(timer);
+                    setTryCount(0);
+                    setSeconds(5)
+                }
+            }, 1000);
+            return () => clearInterval(timer);
         }
-      }, [tryCount, seconds]);
-      
-    
+    }, [tryCount, seconds]);
 
-      const PinIndicatorBubble = () => {
+    const PinIndicatorBubble = () => {
         const pinIndicators = Array(4).fill(null).map((_, index) => (
-          <View
-            key={index}
-            style={
-              index < pressCount
-                ? styles.pinIndicator
-                : styles.pinIndicatorBlank
-            }
-          />
+            <View
+                key={index}
+                style={
+                    index < pressCount
+                        ? styles.pinIndicator
+                        : styles.pinIndicatorBlank
+                }
+            />
         ));
-    
-        return (
-          <View style={{ flexDirection: 'row', gap: 15, alignSelf: 'center',marginTop:20 }}>
-            {pinIndicators}
-          </View>
-        );
-      };
 
-    console.log("try count in main", tryCount);
+        return (
+            <View style={{ flexDirection: 'row', gap: 15, alignSelf: 'center', marginTop: 20 }}>
+                {pinIndicators}
+            </View>
+        );
+    };
+
     return (
         <View style={styles.lockscrContainer}>
-            <View style={{ flex: 0.6 ,alignSelf:'center',justifyContent:'center',alignItems:'center'}}>
-                <View style={{ gap:0,alignItems:'center' }}>
-<Text style={styles.enterPascodeText}>
-    Enter Passcode
-</Text>
-{
-    tryCount > 0 ? (
-        <Text style={styles.attempsText}>
-    You have {3-tryCount}  attempts left
-</Text>
-    ):(    <Text> </Text>
-    )
-
-}
-
+            <View style={styles.topTextContainer}>
+                <View style={{ gap: 0, alignItems: 'center' }}>
+                    <Text style={styles.enterPascodeText}>
+                        Enter Passcode
+                    </Text>
+                    <Text style={[styles.attempsText, { opacity: tryCount > 0 ? 1 : 0 }]}>
+                        You have {3 - tryCount}  attempts left
+                    </Text>
                     <PinIndicatorContainer />
                 </View>
-
-
 
             </View>
             {
                 tryCount === 3 && (
                     <Modal
-        animationType="fade"
-        transparent={true}
-        visible={true}
-        onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setModalVisible(!modalVisible);
-        }}>
+                        animationType="fade"
+                        transparent={true}
+                        visible={true}
+                        onRequestClose={() => {
+                            Alert.alert('Modal has been closed.');
+                            setModalVisible(!modalVisible);
+                        }}>
 
-
-<View style={styles.modalStyle}>
-
-        <Text style={styles.timerTextTitle}>Phone Locked</Text>
-        <Text style={styles.timerText}>Try agin after {seconds} seconds</Text>
-
-            </View>
-            </Modal>
+                        <View style={styles.modalStyle}>
+                            <Text style={styles.timerTextTitle}>Phone Locked</Text>
+                            <Text style={styles.timerText}>Try agin after {seconds} seconds</Text>
+                        </View>
+                    </Modal>
                 )
             }
-            
+
             <NumberPad
                 buttonVal={buttonVal}
                 setButtonVal={setButtonVal}
@@ -118,34 +96,21 @@ const LockScreen = () => {
                 tryCount={tryCount}
                 setTryCount={setTryCount}
             />
-        <View style={styles.deleteButton}>
+            <View style={styles.deleteButton}>
 
-{
-    pinValue[pressCount - 1] != null ? (
-            <TouchableOpacity onPress={() => {
-                if (pinValue[pressCount - 1] != null) {
-                    pinValue[pressCount - 1] = null
-                    setPressCount(pressCount - 1)
-                    console.log(pinValue);
+                <TouchableOpacity onPress={() => {
+                    if (pinValue[pressCount - 1] != null) {
+                        pinValue[pressCount - 1] = null
+                        setPressCount(pressCount - 1)
+                    }
                 }
-            }
-            }>
-                <Text>Delete</Text>
-            </TouchableOpacity>
-    ) : (
-        <View style={styles.deleteButton}>
-            <TouchableOpacity onPress={() => {
-               
-            }
-            }>
-                <Text> </Text>
-            </TouchableOpacity>
-        </View>
-    )
-}
-</View>
+                }>
+                    <Text style={[styles.deleteText, { opacity: pinValue[pressCount - 1] != null ? 1 : 0 }]}>Delete</Text>
+                </TouchableOpacity>
 
-           
+            </View>
+
+
         </View>
 
 
@@ -182,39 +147,51 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'flex-end',
     },
-    timerText:{
-        color:'#E15646',
-        fontFamily:'Roboto',
-        fontSize:20
+    timerText: {
+        color: '#E15646',
+        fontFamily: 'Roboto',
+        fontSize: 20
     },
-    enterPascodeText:{
-        fontFamily:'Roboto',
-        fontSize:28,
+    enterPascodeText: {
+        fontFamily: 'Roboto',
+        fontSize: 28,
         color: '#5A7FD6',
 
 
     },
-    timerTextTitle:{
-        fontFamily:'Roboto',
-        fontSize:28,
-        color:'#E15646',
-        fontWeight:"500"
+    timerTextTitle: {
+        fontFamily: 'Roboto',
+        fontSize: 28,
+        color: '#E15646',
+        fontWeight: "500"
     },
-    modalStyle:{
-         position: 'absolute', 
-         left: 0, 
-         right: 0, 
-         bottom: 0, 
-         top: 0, 
-         backgroundColor: 'rgba(0, 0, 0, 0.8)', 
-         justifyContent: 'center', 
-         alignItems: 'center',
-         gap:10 
+    modalStyle: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        top: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: 10
     },
-    attempsText:{
-        fontFamily:'Roboto',
-        fontSize:17,
-        color:'#E15646',
+    attempsText: {
+        fontFamily: 'Roboto',
+        fontSize: 17,
+        color: '#E15646',
+    },
+    deleteText: {
+        fontFamily: 'Roboto',
+        fontSize: 17,
+        color: '#5A7FD6',
+        marginRight: 20
+    },
+    topTextContainer: {
+        flex: 0.6,
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 
 })

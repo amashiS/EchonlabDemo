@@ -21,7 +21,7 @@ const NumberPad = ({ buttonVal, setButtonVal, lockState, setLockState, setPinVal
                     setTryCount={setTryCount}
                 />
             ))}
-            
+
         </View>
     );
 }
@@ -38,5 +38,5 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         padding: 20
     },
-    
+
 })

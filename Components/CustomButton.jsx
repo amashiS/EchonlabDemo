@@ -1,7 +1,7 @@
 import { Alert, Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 
-const CustomButton = ({ pinValue, setLockState,lockState,setPinValue,tryCount,setTryCount, buttonVal, pressCount, setPressCount }) => {
+const CustomButton = ({ pinValue, setLockState, lockState, setPinValue, tryCount, setTryCount, buttonVal, pressCount, setPressCount }) => {
     const { width, height } = Dimensions.get('window');
     let buttonWidth = width / 5
 
@@ -13,52 +13,34 @@ const CustomButton = ({ pinValue, setLockState,lockState,setPinValue,tryCount,se
                         const updatedPinValue = [...prevPinValue];
                         updatedPinValue[pressCount] = buttonVal;
                         setPressCount(pressCount + 1);
-                        console.log(updatedPinValue);
-
                         if (pressCount === 3) {
                             if (updatedPinValue.every((value, index) => value === [1, 2, 3, 4][index])) {
-                               
+
                                 setLockState(true)
                                 setTimeout(() => {
                                     setPinValue([null, null, null, null]);
                                     setPressCount(0);
-                                    Alert.alert("Unlock");
-
+                                    setTryCount(0)
+                                    Alert.alert("Unlocked");
                                 }, 1000);
-
-
-
                             } else {
-
-                                if(tryCount <= 2){
+                                if (tryCount <= 2) {
                                     setLockState(false)
                                     setTimeout(() => {
                                         setPinValue([null, null, null, null]);
                                         setPressCount(0);
-                                        Alert.alert("Wrong");
-                                        setTryCount(tryCount+1)
-    
+                                        Alert.alert("Incorrect PIN");
+                                        setTryCount(tryCount + 1)
                                     }, 100);
                                 }
                                 else {
-
                                     setTimeout(() => {
-                                     
                                         Alert.alert("Try again 1 min");
                                         setPinValue([null, null, null, null]);
                                         setPressCount(0);
-    
+
                                     }, 100);
-
                                 }
-                                console.log("Try Count is ",tryCount)
-
-                               
-                               
-                                
-
-
-
                             }
                         }
                         return updatedPinValue;
