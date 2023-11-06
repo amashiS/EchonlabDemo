@@ -41,7 +41,7 @@ const CustomButton = ({ pinValue, setLockState, lockState, setPinValue, tryCount
                                 // Faliled 3 atempts
                                 else {
                                     setTimeout(() => {
-                                        Alert.alert("Try again 1 min");
+                                        Alert.alert("Try again in 1 min");
                                         setPinValue([null, null, null, null]);
                                         setPressCount(0);
 
