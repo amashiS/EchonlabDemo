@@ -3,6 +3,16 @@
 
 Lock screen demo app develped for Echonlabs Pvt Ltd assignment by Amashi Silva. The app developed using React Native.
 
+The lock screen is a user-friendly and secure interface, developed using React Native CLI. It boasts a simple and effective 4-digit PIN entry system, ensuring quick and easy access while maintaining security.
+
+One of the standout features of this lock screen is its screen responsiveness. Regardless of the device's screen size or orientation, the interface adapts seamlessly to provide a smooth and consistent user experience. This responsiveness makes it a versatile and reliable choice for various devices.
+
+Additionally, the lock screen incorporates reusable buttons, enhancing its user-friendliness and allowing for a smooth PIN entry process. Users can easily interact with the buttons to enter their 4-digit PIN, ensuring a hassle-free and intuitive experience.
+
+In terms of security, this lock screen allows users three attempts to enter the correct PIN. After three unsuccessful attempts, there is a built-in security feature that locks the screen for 1 minute, adding an extra layer of protection against unauthorized access.
+
+In summary, the lock screen developed with React Native CLI offers a user-friendly and secure 4-digit PIN entry system with a responsive design that adapts to different screen sizes and orientations. The inclusion of reusable buttons and the automatic lockout after three failed attempts make it a robust choice for protecting your device or app.
+
 The pin indicators and buttons are developed as reuseble components. 
 
 
